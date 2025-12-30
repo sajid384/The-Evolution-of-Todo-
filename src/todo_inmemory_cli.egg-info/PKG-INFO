@@ -1,0 +1,174 @@
+Metadata-Version: 2.4
+Name: todo-inmemory-cli
+Version: 0.1.0
+Summary: An in-memory todo console application
+Author-email: Developer <developer@example.com>
+License: MIT
+Requires-Python: >=3.13
+Description-Content-Type: text/markdown
+
+# In-Memory Todo Console App
+
+A command-line interface (CLI) application for managing todo tasks in-memory, built with Python 3.13+.
+
+## Features
+
+- Add tasks with title and description
+- View all tasks with ID and status
+- Update task title and description
+- Delete tasks by ID
+- Mark tasks as complete/incomplete
+- Toggle task completion status
+- All data stored in-memory only (no persistence)
+
+## Prerequisites
+
+- Python 3.13 or higher
+- UV package manager
+
+## Setup Instructions
+
+### 1. Install UV
+
+If you don't have UV installed, you can install it using pip:
+
+```bash
+pip install uv
+```
+
+Or follow the official installation instructions at [https://github.com/astral-sh/uv](https://github.com/astral-sh/uv)
+
+### 2. Clone or Download the Project
+
+```bash
+git clone <repository-url>
+cd todo-inmemory-cli
+```
+
+### 3. Create Virtual Environment and Install Dependencies
+
+```bash
+uv venv
+source .venv/bin/activate  # On Windows: .venv\Scripts\activate
+uv pip install -e .
+```
+
+### 4. Verify Installation
+
+```bash
+todo --help
+```
+
+## Usage
+
+### Add a Task
+
+```bash
+todo add "Task Title" "Task Description"
+# Or using alias
+todo a "Task Title" "Task Description"
+```
+
+### List All Tasks
+
+```bash
+todo list
+# Or using aliases
+todo l
+todo ls
+```
+
+### Update a Task
+
+```bash
+todo update <task_id> "New Title" "New Description"
+# Or update only title
+todo update <task_id> "New Title"
+# Or update only description
+todo update <task_id> "" "New Description"
+# Using alias
+todo u <task_id> "New Title" "New Description"
+```
+
+### Delete a Task
+
+```bash
+todo delete <task_id>
+# Using alias
+todo d <task_id>
+```
+
+### Mark Task as Complete
+
+```bash
+todo complete <task_id>
+# Using alias
+todo c <task_id>
+```
+
+### Mark Task as Incomplete
+
+```bash
+todo incomplete <task_id>
+# Using alias
+todo i <task_id>
+```
+
+### Toggle Task Status
+
+```bash
+todo toggle <task_id>
+# Using alias
+todo t <task_id>
+```
+
+### Get Help
+
+```bash
+todo help
+todo --help
+todo -h
+```
+
+## Examples
+
+```bash
+# Add a task
+todo add "Buy groceries" "Milk, bread, eggs"
+
+# List all tasks
+todo list
+
+# Update a task
+todo update 1 "Updated task title" "Updated description"
+
+# Mark a task as complete
+todo complete 1
+
+# Toggle a task status
+todo toggle 2
+
+# Delete a task
+todo delete 3
+```
+
+## Architecture
+
+The application follows clean architecture principles:
+
+- **Core**: Contains domain entities and business rules
+- **Data**: Handles in-memory storage and retrieval
+- **Services**: Contains application-specific business logic
+- **CLI**: Handles command-line interface interactions
+- **App**: Orchestrates the entire application flow
+- **Utils**: Contains reusable utility functions
+
+## Constraints
+
+- Data is stored in-memory only and is lost when the application terminates
+- No external dependencies beyond Python standard library
+- Console-based interface only
+
+## License
+
+This project is licensed under the MIT License.
